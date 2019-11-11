@@ -1,10 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using RelevantCodes.ExtentReports;
 using SpecflowPages;
 using System;
 using System.Threading;
 using TechTalk.SpecFlow;
 using static SpecflowPages.CommonMethods;
+
 
 namespace SpecflowTests.AcceptanceTest
 {
@@ -27,7 +30,7 @@ namespace SpecflowTests.AcceptanceTest
         public void WhenIAddNewCertification()
         {
             //Click on Add New Button
-            Driver.driver.FindElement(By.XPath("(//div[@class='ui teal button '][contains(.,'Add New')])[3]")).Click();
+            Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div")).Click();
 
             //Add Certification Name
             Driver.driver.FindElement(By.Name("certificationName")).SendKeys("ISTQB Foundation Level - 000"); 
@@ -35,12 +38,22 @@ namespace SpecflowTests.AcceptanceTest
             //Add Certification From
             Driver.driver.FindElement(By.Name("certificationFrom")).SendKeys("ISTQB");
 
-            //Click on Year Selector
+            //Click to Select Year
+            //Driver.driver.FindElement(By.XPath("//input[contains(@class,'ui teal button ')]")).Click();
+
+            // add or select year
+            IWebElement addCerification = Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[2]/div[2]/select"));
+
+            SelectElement addcerificationyear = new SelectElement(addCerification);
+            addcerificationyear.SelectByText("2018");
+
+            //Click on Add button
             Driver.driver.FindElement(By.XPath("//input[contains(@class,'ui teal button ')]")).Click();
 
-           
+
+
             //Click on Add button
-          //  Driver.driver.FindElement(By.XPath("//input[contains(@class,'ui teal button ')]")).Click();
+            // Driver.driver.FindElement(By.XPath("//input[contains(@class,'ui teal button ')]")).Click();
 
 
         }

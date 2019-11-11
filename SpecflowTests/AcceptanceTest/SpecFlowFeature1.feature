@@ -1,7 +1,9 @@
 ﻿Feature: SpecFlowFeature1
+	As a skill trader I want to update my profile
 	In order to update my profile 
-	As a skill trader
 	I want to add the languages that I know
+	I want to add my Skills
+	I want to add my Certification
 
 @mytag
 Scenario: Check if user could able to add a language 
@@ -16,7 +18,7 @@ Scenario: Check if user could able to add a language
 	Then that skills should be displayed om my listing
 
 	
-	Scenario: Check if the user could able to add Certification
+	Scenario: Check if the user could able to add certification
 	Given I clicked on the certification tab under Profile page
 	When I add new certification
 	Then that certification be displayed on my listing
